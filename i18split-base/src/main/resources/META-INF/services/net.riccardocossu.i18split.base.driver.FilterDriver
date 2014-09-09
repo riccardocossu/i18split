@@ -1,0 +1,4 @@
+net.riccardocossu.i18split.base.properties.PropertiesInputDriver
+net.riccardocossu.i18split.base.csv.CsvOutputDriver
+net.riccardocossu.i18split.base.csv.CsvInputDriver
+net.riccardocossu.i18split.base.properties.PropertiesOutputDriver

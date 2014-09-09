@@ -1,0 +1,67 @@
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+ext.slf4j = [version:'1.7.6']
+
+sourceCompatibility = 1.7
+version = '0.1-SNAPSHOT'
+group = 'net.riccardocossu.i18split'
+
+def defaultEncoding = 'UTF-8'
+compileGroovy {
+	groovyOptions.encoding = defaultEncoding
+}
+compileTestGroovy {
+	groovyOptions.encoding = defaultEncoding
+}
+
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'i18split base', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.3.3'
+	compile 'au.com.bytecode:opencsv:2.4'
+	compile ('commons-configuration:commons-configuration:1.10') {
+		exclude module: 'commons-logging'
+	}
+	compile "org.slf4j:slf4j-api:${slf4j.version}"
+	runtime 'ch.qos.logback:logback-classic:1.1.2'
+	runtime "org.slf4j:jcl-over-slf4j:${slf4j.version}"
+//    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+	classifier = 'javadoc'
+	from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+	from sourceSets.main.allSource
+	classifier = 'sources'
+}
+
+artifacts {
+	archives jar
+
+	archives javadocJar
+	archives sourcesJar
+}
+
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
