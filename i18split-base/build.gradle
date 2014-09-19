@@ -1,11 +1,12 @@
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
+apply plugin: 'signing'
 
 ext.slf4j = [version:'1.7.6']
 
 sourceCompatibility = 1.7
-version = '0.1-SNAPSHOT'
+version = '0.1'
 group = 'net.riccardocossu.i18split'
 project.archivesBaseName='i18split-base'
 
@@ -58,11 +59,49 @@ artifacts {
 	archives sourcesJar
 }
 
+signing {
+	sign configurations.archives
+}
 
 uploadArchives {
     repositories {
        flatDir {
            dirs 'repos'
        }
+	   mavenDeployer {
+		   beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+		   repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+			 authentication(userName: sonatypeUsername, password: sonatypePassword)
+		   }
+
+		   pom.project {
+			  name 'i18split-base'
+			  packaging 'jar'
+			  description 'i18split-base is the base library upon which all future build plugins will be based; it is meant to convert 18n property files to a single csv and vice versa'
+			  url 'https://github.com/riccardocossu/i18split'
+
+			  scm {
+				  url 'scm:git@github.com:riccardocossu/i18split.git'
+				  connection 'scm:git@github.com:riccardocossu/i18split.git'
+				  developerConnection 'git@github.com:riccardocossu/i18split.git'
+			  }
+
+			  licenses {
+				  license {
+					  name 'GNU GENERAL PUBLIC LICENSE Version 3 '
+					  url 'http://www.gnu.org/licenses/gpl.txt'
+					  distribution 'repo'
+				  }
+			  }
+
+			  developers {
+				  developer {
+					  id 'riccardocossu'
+					  name 'Riccardo Cossu'
+				  }
+			  }
+		  }
+	   }
     }
 }
