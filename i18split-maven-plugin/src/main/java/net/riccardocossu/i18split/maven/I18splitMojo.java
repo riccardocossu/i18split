@@ -28,13 +28,12 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 
 /**
- * Goal which executes autodoc main engine, configuring it based on its
+ * Goal which executes i18split main engine, configuring it based on its
  * configuration.
  *
- * @goal parse
+ * @goal convert
  *
- * @phase process-classes
- * @requiresDependencyResolution compile+runtime
+ * @phase process-resources
  */
 public class I18splitMojo extends AbstractMojo {
 	/**
@@ -77,7 +76,7 @@ public class I18splitMojo extends AbstractMojo {
 	private String inputBasePath;
 
 	public void execute() throws MojoExecutionException {
-		File f = new File(outputBasePath + "/i18split");
+		File f = new File(outputBasePath);
 
 		if (!f.exists()) {
 			f.mkdirs();
