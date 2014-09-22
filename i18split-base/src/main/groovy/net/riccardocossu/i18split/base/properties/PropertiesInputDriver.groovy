@@ -75,7 +75,7 @@ class PropertiesInputDriver implements InputDriver {
 						p.loadFromXML(is)
 					}
 				} else {
-					f.withReader { r ->
+					f.withInputStream { r ->
 						p.load(r)
 					}
 				}

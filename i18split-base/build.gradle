@@ -6,7 +6,7 @@ apply plugin: 'signing'
 ext.slf4j = [version:'1.7.6']
 
 sourceCompatibility = 1.7
-version = '0.1'
+version = '0.1.1-SNAPSHOT'
 group = 'net.riccardocossu.i18split'
 project.archivesBaseName='i18split-base'
 

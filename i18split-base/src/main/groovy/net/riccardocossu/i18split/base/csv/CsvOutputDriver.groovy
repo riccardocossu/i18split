@@ -19,7 +19,7 @@ public class CsvOutputDriver implements OutputDriver {
 	private static final String QUOTE = "i18split.output.csv.quote"
 	private String[] keys
 	private Writer out
-	private static final String SHORT_NAME = "cvs.output"
+	private static final String SHORT_NAME = "csv.output"
 	private CSV csv
 
 	@Override

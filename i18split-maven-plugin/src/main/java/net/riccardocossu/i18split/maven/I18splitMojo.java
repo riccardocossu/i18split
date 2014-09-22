@@ -75,6 +75,24 @@ public class I18splitMojo extends AbstractMojo {
 	 */
 	private String inputBasePath;
 
+	/**
+	 * Input encoding
+	 *
+	 * @parameter expression="UTF-8"
+	 * @required
+	 */
+	private String inputEncoding;
+
+	/**
+	 * Output encoding
+	 *
+	 * @parameter expression="UTF-8"
+	 * @required
+	 */
+	private String outputEncoding;
+
+
+
 	public void execute() throws MojoExecutionException {
 		File f = new File(outputBasePath);
 
@@ -87,6 +105,8 @@ public class I18splitMojo extends AbstractMojo {
 		conf.addProperty(ConfigKeys.OUTPUT_DRIVER, outputPlugin);
 		conf.addProperty(ConfigKeys.OUTPUT_BASE_PATH, outputBasePath);
 		conf.addProperty(ConfigKeys.INPUT_BASE_PATH, inputBasePath);
+		conf.addProperty(ConfigKeys.INPUT_ENCODING, inputEncoding);
+		conf.addProperty(ConfigKeys.OUTPUT_ENCODING, outputEncoding);
 		if(pluginsConfig != null) {
 			@SuppressWarnings("unchecked")
 			MapConfiguration mc = new MapConfiguration(pluginsConfig);
