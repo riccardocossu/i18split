@@ -61,10 +61,7 @@ public class EngineTest {
 		new File(iodir+"/"+csvOut).eachLine {line ->
 			lines << line
 		}
-		assertEquals('"KEY","de"',lines[0])
-		assertEquals('"a","awesome"',lines[1])
-		assertEquals('"b","bad"',lines[2])
-		assertEquals('"c","cool"',lines[3])
+		assertEquals(['"KEY","de"','"a","awesome"','"b","bad"','"c","cool"'],lines)
 	}
 
 }
