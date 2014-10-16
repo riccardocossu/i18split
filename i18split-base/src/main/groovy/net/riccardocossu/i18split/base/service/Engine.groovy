@@ -39,6 +39,7 @@ public class Engine {
         InputDriver reader = inputPluginsByShortName.get(inputDriver)
         def outputDriver = configuration.getString(ConfigKeys.OUTPUT_DRIVER)
         OutputDriver writer = inputPluginsByShortName.get(outputDriver)
+		boolean keepOrder = configuration.getBoolean(ConfigKeys.KEEP_ORDER,false)
         try {
             def usedKeys = reader.init(configuration)
             configuration.addProperty(ConfigKeys.INPUT_KEYS, usedKeys)
@@ -46,12 +47,17 @@ public class Engine {
             def rows = []
             def row = reader.readNext()
             while (row != null) {
-                rows.add(row)
+				if(row.values) {
+					rows.add(row)
+				}
                 row = reader.readNext()
             }
-            // TODO order?
+
+            if(keepOrder) {
+				rows = rows.sort {it.key}
+			}
             for (r in rows) {
-                writer.writeRow(r)
+				writer.writeRow(r)
             }
         } finally {
             reader.close()

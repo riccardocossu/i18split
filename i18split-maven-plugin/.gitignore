@@ -2,3 +2,5 @@
 /.settings
 /.classpath
 /.project
+/nb-configuration.xml
+/pom.xml.asc

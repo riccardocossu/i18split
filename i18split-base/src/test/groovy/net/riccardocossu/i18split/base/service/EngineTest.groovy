@@ -5,6 +5,7 @@ import static org.junit.Assert.*
 import net.riccardocossu.i18split.base.config.ConfigKeys
 import net.riccardocossu.i18split.base.csv.CsvInputDriver;
 import net.riccardocossu.i18split.base.csv.CsvOutputDriver
+import net.riccardocossu.i18split.base.csv.CvsInputDriverTest;
 import net.riccardocossu.i18split.base.properties.PropertiesInputDriver
 import net.riccardocossu.i18split.base.properties.PropertiesOutputDriver;
 
@@ -41,6 +42,29 @@ public class EngineTest {
 		eng.process()
 
 	}
-
+	@Test
+	def void readPropertiesWithOrderShouldResultInOrderedCsv() {
+		Configuration conf  = new BaseConfiguration()
+		conf.addProperty(PropertiesInputDriver.CONFIG_KEY_FILES_NAME, "ordered")
+		conf.addProperty(ConfigKeys.INPUT_BASE_PATH, "src/test/resources/engine/inPropertiesOutCsv")
+		conf.addProperty(ConfigKeys.KEEP_ORDER, true)
+		def iodir = System.getProperty("java.io.tmpdir")
+		conf.addProperty(ConfigKeys.OUTPUT_BASE_PATH, iodir)
+		def csvOut = "i18splitOrdered.csv"
+		conf.addProperty(CsvOutputDriver.FILE_NAME, csvOut)
+		conf.addProperty(ConfigKeys.INPUT_DRIVER, PropertiesInputDriver.SHORT_NAME)
+		conf.addProperty(ConfigKeys.OUTPUT_DRIVER, CsvOutputDriver.SHORT_NAME)
+		conf.addProperty(PropertiesInputDriver.CONFIG_KEY_MASTER_LOCALE, "de")
+		Engine eng = new Engine(conf)
+		eng.process()
+		def lines = []
+		new File(iodir+"/"+csvOut).eachLine {line ->
+			lines << line
+		}
+		assertEquals('"KEY","de"',lines[0])
+		assertEquals('"a","awesome"',lines[1])
+		assertEquals('"b","bad"',lines[2])
+		assertEquals('"c","cool"',lines[3])
+	}
 
 }

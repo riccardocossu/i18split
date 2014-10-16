@@ -1,6 +1,8 @@
 "KEY","de","en"
 "report.basicInfo.financialData.financialStatements.label","Periode Jahresabschluss","Financial Statements"
+
 "report.basicInfo.address.postalAddress.label","Postadresse","Postal address"
+
 "report.decision.classification.companyStatus.erased","Gelöscht","Erased"
 "support.request.email.from","Von","From"
 "report.email.order.vatcode","UID Nummer","?? report.email.order.vatcode ??"
