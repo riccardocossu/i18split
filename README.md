@@ -111,3 +111,7 @@ No, my friend, you can try in your current project, just use this configuration 
 i18split-maven-plugin is on maven central so you don't need any more configuration to get started!
 Please note that 18split requires at least Java 7 to run; it shouldn't be hard to backport it to Java 6 or lower if someone needs it.
 
+## Detailed configuration
+
+The plugin has a basic common configuration
+
