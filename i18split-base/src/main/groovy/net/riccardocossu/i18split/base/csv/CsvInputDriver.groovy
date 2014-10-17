@@ -52,8 +52,9 @@ class CsvInputDriver implements InputDriver {
 		char separator = separatorString.charAt(0)
 		String quoteString = configuration.getString(QUOTE, '"')
 		char quote = quoteString.charAt(0)
+		String encoding = configuration.getString(ConfigKeys.INPUT_ENCODING, 'UTF-8')
 		csv = CSV.separator(separator).quote(quote).create()
-		input = new InputStreamReader(new FileInputStream("${baseDir}/${fileName}".toString()))
+		input = new InputStreamReader(new FileInputStream("${baseDir}/${fileName}".toString()),encoding)
 		List<String[]> lines = new ArrayList<String[]>()
 		csv.read(input, new CSVReadProc() {
 			void procRow(int rowIndex, String... values) {
