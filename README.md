@@ -46,7 +46,7 @@ If you have a CSV file called ValidationMessages.csv in the same format as my ex
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.1.1</version>
+				<version>0.2.0</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -79,7 +79,7 @@ No, my friend, you can try in your current project, just use this configuration 
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.1.1</version>
+				<version>0.2.0</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -110,3 +110,4 @@ No, my friend, you can try in your current project, just use this configuration 
 
 i18split-maven-plugin is on maven central so you don't need any more configuration to get started!
 Please note that 18split requires at least Java 7 to run; it shouldn't be hard to backport it to Java 6 or lower if someone needs it.
+
