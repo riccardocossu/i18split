@@ -113,5 +113,64 @@ Please note that 18split requires at least Java 7 to run; it shouldn't be hard t
 
 ## Detailed configuration
 
-The plugin has a basic common configuration
+The plugin has a basic common configuration:
+
+* *outputBasePath* where output files should be put
+* *inputPlugin* short name for input plugin (see below)
+* *outputPlugin* short name for output plugin (see below)
+* *inputBasePath* base path for input files
+* *inputEncoding* encoding for input files, it is ignored for properties files, unless they are in the xml format
+* *outputEncoding* encoding for output files, ignored if they are classic (not xml) properties files
+* *pluginsConfig* additional, non core, configuration; the main use is to configure arbitrary plugins
+
+### Input plugins
+
+#### CsvInputDriver
+
+Short name: *csv.input*
+
+It reads a csv file; the first line will be the header, where the first column will contain the work "key" and the following will be locale names.; the number of locales will set the number of generated files.
+
+Configuration:
+* *i18split.input.csv.fileName* name of csv input file
+* *i18split.input.csv.separator* separator to use for csv values
+* *i18split.input.csv.quote* quote char to be used
+
+#### PropertiesInputDriver
+
+Short name: *properties.input*
+
+It reads a set of property files with the usual convention of using the locale as a suffix for the name of the file.
+
+Configuration:
+* *i18split.input.properties.file.name* base file name for properties files (messages or so)
+* *i18split.input.properties.isXml* tells if the source files are in xml format (default *false*)
+* *i18split.input.properties.masterLocale* tells which locale contains the reference set of keys; this will be used to iterate
+
+### Output drivers
+
+#### CsvOutputDriver
+
+Short name: *csv.output*
+
+Writes a CSV file.
+
+Configuration:
+* *i18split.output.csv.fileName* csv file name
+* *i18split.output.csv.separator* separator to use
+* *i18split.output.csv.quote* quote to use
+
+#### PropertiesOutputDriver
+
+Short name: *properties.output*
+
+Writes a set of properties file.
+
+Configuration:
+* *i18split.output.properties.fileName.suffix* output file names prefix (this typo will be fixed in the future)
+* *i18split.output.properties.isXml* whether to write the files as xml (default: false)
+
+
+
+Configuration:
 
