@@ -169,8 +169,3 @@ Writes a set of properties file.
 Configuration:
 * *i18split.output.properties.fileName.suffix* output file names prefix (this typo will be fixed in the future)
 * *i18split.output.properties.isXml* whether to write the files as xml (default: false)
-
-
-
-Configuration:
-
