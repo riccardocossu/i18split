@@ -16,7 +16,10 @@ package net.riccardocossu.i18split.maven;
  * limitations under the License.
  */
 
+import groovy.util.logging.Log;
+
 import java.io.File;
+import java.util.Iterator;
 import java.util.Map;
 
 import net.riccardocossu.i18split.base.config.ConfigKeys;
@@ -111,6 +114,12 @@ public class I18splitMojo extends AbstractMojo {
 			@SuppressWarnings("unchecked")
 			MapConfiguration mc = new MapConfiguration(pluginsConfig);
 			conf.append(mc);
+		}
+		org.apache.maven.plugin.logging.Log log = getLog();
+		Iterator<String> keys = conf.getKeys();
+		while(keys.hasNext()) {
+			String k = keys.next();
+			log.info(String.format("%s = %s",k,conf.getProperty(k)));
 		}
 		Engine eng = new Engine(conf);
 		eng.process();

@@ -64,4 +64,18 @@ public class EngineTest {
 		assertEquals(['"KEY","de"','"a","awesome"','"b","bad"','"c","cool"'],lines)
 	}
 
+	@Test
+	def void readCsvWithMorePropertiesAndWritePropertiesShouldNotCrash() {
+		Configuration conf  = new BaseConfiguration()
+		conf.addProperty(ConfigKeys.INPUT_BASE_PATH, "src/test/resources/engine/inCsvOutProperties")
+		conf.addProperty(ConfigKeys.OUTPUT_BASE_PATH, System.getProperty("java.io.tmpdir"))
+		conf.addProperty(PropertiesOutputDriver.CONFIG_KEY_FILES_NAME, "moreProperties")
+		conf.addProperty(CsvInputDriver.FILE_NAME, "moreProperties.csv")
+		conf.addProperty(ConfigKeys.INPUT_DRIVER, CsvInputDriver.SHORT_NAME)
+		conf.addProperty(ConfigKeys.OUTPUT_DRIVER, PropertiesOutputDriver.SHORT_NAME)
+		Engine eng = new Engine(conf)
+		eng.process()
+
+	}
+
 }

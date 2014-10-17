@@ -31,10 +31,10 @@ class CsvInputDriver implements InputDriver {
 		if(lineIt.hasNext()) {
 			String[] line = lineIt.next()
 			DataRow row = new DataRow()
-			if(line.length >0) {
+			if(line.length > 0 && line[0].trim().length() > 0) {
 				row.values = [:]
 				row.key = line[0]
-				for (int col = 1; col < line.length; col++) {
+				for (int col = 1; col <= inputs.length; col++) {
 					row.values[inputs[col - 1]] = line[col]
 				}
 			}
