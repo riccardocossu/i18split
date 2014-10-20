@@ -16,8 +16,6 @@ package net.riccardocossu.i18split.maven;
  * limitations under the License.
  */
 
-import groovy.util.logging.Log;
-
 import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
