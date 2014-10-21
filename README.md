@@ -46,7 +46,7 @@ If you have a CSV file called ValidationMessages.csv in the same format as my ex
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.2.0</version>
+				<version>0.2.1</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -79,7 +79,7 @@ No, my friend, you can try in your current project, just use this configuration 
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.2.0</version>
+				<version>0.2.1</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -167,5 +167,5 @@ Short name: *properties.output*
 Writes a set of properties file.
 
 Configuration:
-* *i18split.output.properties.fileName.suffix* output file names prefix (this typo will be fixed in the future)
+* *i18split.output.properties.fileName.prefix* output file names prefix (this typo has been fixed in revision 0.2.1 but you can still use deprecated old parameter for a while)
 * *i18split.output.properties.isXml* whether to write the files as xml (default: false)
