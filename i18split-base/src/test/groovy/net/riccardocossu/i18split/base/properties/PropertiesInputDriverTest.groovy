@@ -21,7 +21,7 @@ class PropertiesInputDriverTest {
 		conf.addProperty(ConfigKeys.INPUT_BASE_PATH, "src/test/resources/getFileList/testEmptyFiles")
 		driver.init(conf)
         def propFiles = driver.getFileList()
-        assertEquals(2,propFiles.size())
+        assertEquals(3,propFiles.size())
         assertTrue(propFiles.containsKey("it"))
         assertTrue(propFiles.containsKey("en_GB"))
     }

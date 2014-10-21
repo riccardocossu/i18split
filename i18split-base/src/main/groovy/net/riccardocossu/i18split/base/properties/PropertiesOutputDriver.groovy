@@ -27,6 +27,7 @@ public class PropertiesOutputDriver implements OutputDriver {
 	private String encoding
 	private Map<String,Properties> result
 	private static final String SHORT_NAME = "properties.output"
+        private String defaultColumn
 
 	@Override
 	public String[] init(Configuration configuration) {
@@ -35,6 +36,7 @@ public class PropertiesOutputDriver implements OutputDriver {
 		isXml = configuration.getBoolean(CONFIG_KEY_IS_XML,false)
 		dirOut = configuration.getString(ConfigKeys.OUTPUT_BASE_PATH)
 		encoding = configuration.getString(ConfigKeys.OUTPUT_ENCODING,"UTF-8")
+                defaultColumn = configuration.getString(ConfigKeys.DEFAULT_COLUMN,"default")
 		result = [:]
 		keys.each { k ->
 			result[k] = new Properties()
@@ -52,7 +54,11 @@ public class PropertiesOutputDriver implements OutputDriver {
 	public void close() throws IOException {
 		keys.each { k ->
 			Properties target = result[k]
-			new File(dirOut, isXml ? "${fileNamePrefix}_${k}.xml".toString() : "${fileNamePrefix}_${k}.properties".toString()).withOutputStream { s ->
+                        def suffix = k.equals(defaultColumn) ? '':"_${k}".toString()
+                        def fnStandard = "${fileNamePrefix}${suffix}.xml".toString()
+                        def fnXml = "${fileNamePrefix}${suffix}.properties".toString()
+                        def fileName = isXml ? fnStandard : fnXml
+			new File(dirOut, fileName).withOutputStream { s ->
 				if(isXml) {
 					target.storeToXML(s, GENERATED_BY,encoding)
 				} else {

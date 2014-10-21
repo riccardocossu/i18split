@@ -10,4 +10,5 @@ public class ConfigKeys {
 	public static final String OUTPUT_ENCODING = "i18split.output.encoding"
 	public static final String INPUT_KEYS = "i18split.input.keys"
 	public static final String KEEP_ORDER = "i18split.output.keepOrder"
+	public static final String DEFAULT_COLUMN = "i18split.default.column"
 }

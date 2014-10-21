@@ -2,6 +2,7 @@ package net.riccardocossu.i18split.base.service
 
 import net.riccardocossu.i18split.base.csv.CsvOutputDriver
 import static org.junit.Assert.*
+import java.io.File
 import net.riccardocossu.i18split.base.config.ConfigKeys
 import net.riccardocossu.i18split.base.csv.CsvInputDriver;
 import net.riccardocossu.i18split.base.csv.CsvOutputDriver
@@ -77,5 +78,19 @@ public class EngineTest {
 		eng.process()
 
 	}
+        @Test
+	def void readCsvWithDefaultAndWritePropertiesShouldProduceDefaultFile() {
+		Configuration conf  = new BaseConfiguration()
+		conf.addProperty(ConfigKeys.INPUT_BASE_PATH, "src/test/resources/engine/inCsvOutProperties")
+        def tmpDir = System.getProperty("java.io.tmpdir")
+		conf.addProperty(ConfigKeys.OUTPUT_BASE_PATH, tmpDir)
+		conf.addProperty(PropertiesOutputDriver.CONFIG_KEY_FILES_NAME, "defaultColumn")
+		conf.addProperty(CsvInputDriver.FILE_NAME, "default_column.csv")
+		conf.addProperty(ConfigKeys.INPUT_DRIVER, CsvInputDriver.SHORT_NAME)
+		conf.addProperty(ConfigKeys.OUTPUT_DRIVER, PropertiesOutputDriver.SHORT_NAME)
+		Engine eng = new Engine(conf)
+		eng.process()
+        assertTrue(new File(tmpDir, 'defaultColumn.properties').exists())
 
+	}
 }

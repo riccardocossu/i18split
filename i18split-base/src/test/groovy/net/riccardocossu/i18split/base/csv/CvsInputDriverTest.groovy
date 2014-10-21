@@ -50,4 +50,16 @@ public class CvsInputDriverTest {
 		assertEquals("età",row.values["it"])
 	}
 
+    @Test
+	public void csvInputDriverShouldProduceTwoFilesIfItContainsItAndDefault() {
+		CsvInputDriver driver = new CsvInputDriver();
+		Configuration conf = new BaseConfiguration()
+		conf.addProperty(ConfigKeys.INPUT_BASE_PATH, "src/test/resources/engine/inCsvOutProperties")
+		conf.addProperty(CsvInputDriver.FILE_NAME, "default_column.csv")
+		String[] header = driver.init(conf)
+		assertEquals(2,header.length)
+		assertEquals("it",header[0])
+        assertEquals("default",header[1])
+	}
+
 }
