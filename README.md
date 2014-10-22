@@ -46,7 +46,7 @@ If you have a CSV file called ValidationMessages.csv in the same format as my ex
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.2.1</version>
+				<version>0.2.2</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -63,7 +63,7 @@ If you have a CSV file called ValidationMessages.csv in the same format as my ex
 							<outputPlugin>properties.output</outputPlugin>
 							<pluginsConfig>
 								<i18split.input.csv.fileName>ValidationMessages.csv</i18split.input.csv.fileName>
-								<i18split.output.properties.fileName.suffix>ValidationMessages</i18split.output.properties.fileName.suffix>
+								<i18split.output.properties.fileName.prefix>ValidationMessages</i18split.output.properties.fileName.prefix>
 							</pluginsConfig>
 						</configuration>
 					</execution>
@@ -79,7 +79,7 @@ No, my friend, you can try in your current project, just use this configuration 
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.2.1</version>
+				<version>0.2.2</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -146,6 +146,7 @@ Configuration:
 * *i18split.input.properties.file.name* base file name for properties files (messages or so)
 * *i18split.input.properties.isXml* tells if the source files are in xml format (default *false*)
 * *i18split.input.properties.masterLocale* tells which locale contains the reference set of keys; this will be used to iterate
+* *i18split.default.column* the name of the default column (the one that is mapped on default properties file - the one without locale); this will be used by the output driver
 
 ### Output drivers
 
@@ -169,3 +170,4 @@ Writes a set of properties file.
 Configuration:
 * *i18split.output.properties.fileName.prefix* output file names prefix (this typo has been fixed in revision 0.2.1 but you can still use deprecated old parameter for a while)
 * *i18split.output.properties.isXml* whether to write the files as xml (default: false)
+* *i18split.default.column* the name of the default column in the output; this will be mapped to the default properties files
