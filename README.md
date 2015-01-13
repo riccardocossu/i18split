@@ -1,3 +1,5 @@
+![](https://maven-badges.herokuapp.com/maven-central/net.riccardocossu.i18split/i18split-base/badge.svg "Maven central")
+
 i18split
 ========
 
