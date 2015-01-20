@@ -56,7 +56,7 @@ If you have a CSV file called ValidationMessages.csv in the same format as my ex
 				<executions>
 					<execution>
 						<id>ValidationMessages</id>
-						<phase>process-resources</phase>
+						<phase>generate-resources</phase>
 						<goals>
 							<goal>convert</goal>
 						</goals>
@@ -89,7 +89,7 @@ No, my friend, you can try in your current project, just use this configuration 
 				<executions>
 					<execution>
 						<id>ValidationMessages</id>
-						<phase>process-resources</phase>
+						<phase>generate-resources</phase>
 						<goals>
 							<goal>convert</goal>
 						</goals>
