@@ -6,9 +6,14 @@ apply plugin: 'signing'
 ext.slf4j = [version:'1.7.6']
 
 sourceCompatibility = 1.7
-version = '0.2.2'
+version = '0.2.3'
 group = 'net.riccardocossu.i18split'
 project.archivesBaseName='i18split-base'
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
 
 def defaultEncoding = 'UTF-8'
 compileGroovy {
@@ -60,6 +65,7 @@ artifacts {
 }
 
 signing {
+	required { isReleaseVersion }
 	sign configurations.archives
 }
 

@@ -48,7 +48,7 @@ If you have a CSV file called ValidationMessages.csv in the same format as my ex
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.2.2</version>
+				<version>0.2.3</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -81,7 +81,7 @@ No, my friend, you can try in your current project, just use this configuration 
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.2.2</version>
+				<version>0.2.3</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -147,7 +147,7 @@ It reads a set of property files with the usual convention of using the locale a
 Configuration:
 * *i18split.input.properties.file.name* base file name for properties files (messages or so)
 * *i18split.input.properties.isXml* tells if the source files are in xml format (default *false*)
-* *i18split.input.properties.masterLocale* tells which locale contains the reference set of keys; this will be used to iterate
+* *i18split.input.properties.masterLocale* tells which locale contains the reference set of keys; this will be used to iterate the keys. If missing, all keys from all files will be used
 * *i18split.default.column* the name of the default column (the one that is mapped on default properties file - the one without locale); this will be used by the output driver
 
 ### Output drivers
