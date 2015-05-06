@@ -147,7 +147,7 @@ It reads a set of property files with the usual convention of using the locale a
 Configuration:
 * *i18split.input.properties.file.name* base file name for properties files (messages or so)
 * *i18split.input.properties.isXml* tells if the source files are in xml format (default *false*)
-* *i18split.input.properties.masterLocale* tells which locale contains the reference set of keys; this will be used to iterate
+* *i18split.input.properties.masterLocale* tells which locale contains the reference set of keys; this will be used to iterate, if not provided all keys from all files are persisted
 * *i18split.default.column* the name of the default column (the one that is mapped on default properties file - the one without locale); this will be used by the output driver
 
 ### Output drivers
