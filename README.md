@@ -152,6 +152,9 @@ Configuration:
 
 ### Output drivers
 
+Configuration (common to all output drivers):
+* *i18split.output.keepOrder* if true keys are written according to natural order (default: *false*)
+
 #### CsvOutputDriver
 
 Short name: *csv.output*
@@ -162,6 +165,7 @@ Configuration:
 * *i18split.output.csv.fileName* csv file name
 * *i18split.output.csv.separator* separator to use
 * *i18split.output.csv.quote* quote to use
+* *i18split.output.encoding* output file encoding
 
 #### PropertiesOutputDriver
 
