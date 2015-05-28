@@ -11,6 +11,15 @@ group = 'net.riccardocossu.i18split'
 project.archivesBaseName='i18split-base'
 
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+if (!project.hasProperty("sonatypeUsername")) {
+	ext.sonatypeUsername = "none"
+}
+
+if (!project.hasProperty("sonatypePassword")) {
+	ext.sonatypePassword = "none"
+}
+
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.3'
 }
@@ -78,7 +87,7 @@ uploadArchives {
 		   beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
 		   repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-			 authentication(userName: sonatypeUsername ?: 'none' , password: sonatypePassword ?: 'none')
+			 authentication(userName: sonatypeUsername, password: sonatypePassword)
 		   }
 
 		   pom.project {
