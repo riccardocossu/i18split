@@ -79,16 +79,14 @@ public class I18splitMojo extends AbstractMojo {
 	/**
 	 * Input encoding
 	 *
-	 * @parameter expression="UTF-8"
-	 * @required
+	 * @parameter default="UTF-8"
 	 */
 	private String inputEncoding;
 
 	/**
 	 * Output encoding
 	 *
-	 * @parameter expression="UTF-8"
-	 * @required
+	 * @parameter default="UTF-8"
 	 */
 	private String outputEncoding;
 

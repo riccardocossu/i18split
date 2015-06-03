@@ -11,4 +11,6 @@ public class ConfigKeys {
 	public static final String INPUT_KEYS = "i18split.input.keys"
 	public static final String KEEP_ORDER = "i18split.output.keepOrder"
 	public static final String DEFAULT_COLUMN = "i18split.default.column"
+	public static final String INPUT_FILE = "i18split.input.file"
+	public static final String OUTPUT_FILE = "i18split.output.file"
 }

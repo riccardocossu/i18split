@@ -5,14 +5,17 @@ import net.riccardocossu.i18split.base.driver.InputDriver
 import net.riccardocossu.i18split.base.model.DataRow
 
 import org.apache.commons.configuration.Configuration
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-import au.com.bytecode.opencsv.CSV;
-import au.com.bytecode.opencsv.CSVReadProc;
+import au.com.bytecode.opencsv.CSV
+import au.com.bytecode.opencsv.CSVReadProc
 
 /**
  * Created by riccardo on 04/09/14.
  */
 class CsvInputDriver implements InputDriver {
+	private static final Logger log = LoggerFactory.getLogger(CsvInputDriver.class)
 
 	private static final String FILE_NAME = "i18split.input.csv.fileName"
 	private static final String SEPARATOR = "i18split.input.csv.separator"
@@ -46,16 +49,16 @@ class CsvInputDriver implements InputDriver {
 
     @Override
     String[] init(Configuration configuration) {
-        fileName = configuration.getString(FILE_NAME)
+        fileName = configuration.getString(ConfigKeys.INPUT_FILE,configuration.getString(FILE_NAME))
         baseDir = new File(configuration.getString(ConfigKeys.INPUT_BASE_PATH))
 		String separatorString = configuration.getString(SEPARATOR,',')
 		char separator = separatorString.charAt(0)
 		String quoteString = configuration.getString(QUOTE, '"')
 		char quote = quoteString.charAt(0)
 		String encoding = configuration.getString(ConfigKeys.INPUT_ENCODING, 'UTF-8')
+		List<String[]> lines = new ArrayList<String[]>()
 		csv = CSV.separator(separator).quote(quote).create()
 		input = new InputStreamReader(new FileInputStream("${baseDir}/${fileName}".toString()),encoding)
-		List<String[]> lines = new ArrayList<String[]>()
 		csv.read(input, new CSVReadProc() {
 			void procRow(int rowIndex, String... values) {
 				if(rowIndex == 0) {

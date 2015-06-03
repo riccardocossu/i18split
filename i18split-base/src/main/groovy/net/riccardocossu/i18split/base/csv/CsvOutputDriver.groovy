@@ -8,12 +8,15 @@ import au.com.bytecode.opencsv.CSVWriter;
 import java.io.IOException;
 
 import org.apache.commons.configuration.Configuration;
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory;
 
 import net.riccardocossu.i18split.base.config.ConfigKeys;
 import net.riccardocossu.i18split.base.driver.OutputDriver;
 import net.riccardocossu.i18split.base.model.DataRow;
 
 public class CsvOutputDriver implements OutputDriver {
+	private static final Logger log = LoggerFactory.getLogger(CsvOutputDriver.class)
 	private static final String FILE_NAME = "i18split.output.csv.fileName"
 	private static final String SEPARATOR = "i18split.output.csv.separator"
 	private static final String QUOTE = "i18split.output.csv.quote"
@@ -25,7 +28,8 @@ public class CsvOutputDriver implements OutputDriver {
 	@Override
 	public String[] init(Configuration configuration) {
 		keys = configuration.getStringArray(ConfigKeys.INPUT_KEYS)
-		String fileOut = "${configuration.getString(ConfigKeys.OUTPUT_BASE_PATH)}/${configuration.getString(FILE_NAME)}".toString()
+		def fileName = configuration.getString(ConfigKeys.OUTPUT_FILE,configuration.getString(FILE_NAME))
+		String fileOut = "${configuration.getString(ConfigKeys.OUTPUT_BASE_PATH)}/${fileName}".toString()
 		String encoding = configuration.getString(ConfigKeys.OUTPUT_ENCODING,"UTF-8")
 		out = new OutputStreamWriter(new FileOutputStream(fileOut),encoding)
 		String separatorString = configuration.getString(SEPARATOR,',')
@@ -44,7 +48,7 @@ public class CsvOutputDriver implements OutputDriver {
 				}
 				output.writeNext(values)
 			}
-		});
+		})
 		return keys
 
 	}

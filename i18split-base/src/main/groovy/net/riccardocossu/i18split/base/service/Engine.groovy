@@ -49,7 +49,7 @@ public class Engine {
 			writer = (OutputDriver)inputPluginsByShortName[outputDriver]
             def usedKeys = reader.init configuration
             configuration.addProperty(ConfigKeys.INPUT_KEYS, usedKeys)
-            writer.init configuration
+			writer.init configuration
             def rows = []
             DataRow row = reader.readNext()
             while (row != null) {
