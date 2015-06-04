@@ -48,7 +48,7 @@ If you have a CSV file called ValidationMessages.csv in the same format as my ex
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.2.3</version>
+				<version>1.0.0</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -81,7 +81,7 @@ No, my friend, you can try in your current project, just use this configuration 
 <plugin>
 				<groupId>net.riccardocossu.i18split</groupId>
 				<artifactId>i18split-maven-plugin</artifactId>
-				<version>0.2.3</version>
+				<version>1.0.0</version>
 				<configuration>
 					<inputBasePath>${basedir}/src/main/resources</inputBasePath>
 					<outputBasePath>${project.build.directory}</outputBasePath>
@@ -107,6 +107,10 @@ No, my friend, you can try in your current project, just use this configuration 
 			</plugin>
 ```
 
+# Sweet but... I need to share the output with someone who would prefer XLS or ODS
+
+Why don't you check [i18split-export](https://github.com/riccardocossu/i18split-export) out?
+Another lucky day for you!
 
 ## Time to try!
 
@@ -127,6 +131,10 @@ The plugin has a basic common configuration:
 
 ### Input plugins
 
+All input plugin should support the standard property for input file:
+
+*i18split.input.file* for single file inputs, this will have precedence over the specific plugin fileName
+
 #### CsvInputDriver
 
 Short name: *csv.input*
@@ -134,7 +142,7 @@ Short name: *csv.input*
 It reads a csv file; the first line will be the header, where the first column will contain the work "key" and the following will be locale names.; the number of locales will set the number of generated files.
 
 Configuration:
-* *i18split.input.csv.fileName* name of csv input file
+* ~~*i18split.input.csv.fileName* name of csv input file~~ (deprecated, please use *i18split.input.file* instead)
 * *i18split.input.csv.separator* separator to use for csv values
 * *i18split.input.csv.quote* quote char to be used
 
@@ -154,6 +162,7 @@ Configuration:
 
 Configuration (common to all output drivers):
 * *i18split.output.keepOrder* if true keys are written according to natural order (default: *false*)
+* *i18split.output.file* output file for single file output plugins
 
 #### CsvOutputDriver
 
@@ -162,7 +171,7 @@ Short name: *csv.output*
 Writes a CSV file.
 
 Configuration:
-* *i18split.output.csv.fileName* csv file name
+* ~~*i18split.output.csv.fileName* csv file name~~ (deprecated, please use *i18split.output.file* instead)
 * *i18split.output.csv.separator* separator to use
 * *i18split.output.csv.quote* quote to use
 * *i18split.output.encoding* output file encoding
