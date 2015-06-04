@@ -66,7 +66,7 @@ If you have a CSV file called ValidationMessages.csv in the same format as my ex
 							<inputPlugin>csv.input</inputPlugin>
 							<outputPlugin>properties.output</outputPlugin>
 							<pluginsConfig>
-								<i18split.input.csv.fileName>ValidationMessages.csv</i18split.input.csv.fileName>
+								<i18split.input.file>ValidationMessages.csv</i18split.input.file>
 								<i18split.output.properties.fileName.prefix>ValidationMessages</i18split.output.properties.fileName.prefix>
 							</pluginsConfig>
 						</configuration>
@@ -101,7 +101,7 @@ No, my friend, you can try in your current project, just use this configuration 
 							<pluginsConfig>
 								<i18split.input.properties.file.name>ValidationMessages</i18split.input.properties.file.name>
 								<i18split.input.properties.masterLocale>de</i18split.input.properties.masterLocale>
-								<i18split.output.csv.fileName>ValidationMessages.csv</i18split.output.csv.fileName>
+								<i18split.output.file>ValidationMessages.csv</i18split.output.file>
 							</pluginsConfig>
 						</configuration>
 					</execution>
