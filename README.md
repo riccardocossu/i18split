@@ -1,4 +1,5 @@
 ![](https://maven-badges.herokuapp.com/maven-central/net.riccardocossu.i18split/i18split-base/badge.svg "Maven central")
+
 ![](https://codeship.com/projects/81684260-e74e-0132-5eaa-1ed940dfa1b4/status?branch=master)
 
 i18split
