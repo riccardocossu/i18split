@@ -114,6 +114,10 @@ No, my friend, you can try in your current project, just use this configuration 
 Why don't you check [i18split-export](https://github.com/riccardocossu/i18split-export) out?
 Another lucky day for you!
 
+# Still not enough... I hate CSV and prefer some other format
+
+Well, why don't you [write your own pugin](https://github.com/riccardocossu/i18split/wiki/Driver)?
+
 ## Time to try!
 
 i18split-maven-plugin is on maven central so you don't need any more configuration to get started!
